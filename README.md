@@ -1,6 +1,6 @@
 ## Description 📄
 
-<img src="static\icon.png" width="100" />
+<img src="static\preview.png" width="600" style="border-radius: 20px" />
 
 Convert your Docx file to a Markdown file.
 
