@@ -34,21 +34,15 @@ def heroSec():
     st.header('DoMD')
     st.caption('This is a simple app to help you write Markdown documents.')
     st.divider() 
-    uploadDocs()
+    content = utilities.renderer()
+    if content is not None:
+        previewMD(content)
 
-def previewMD():
+def previewMD(content):
     st.markdown('### Preview for your `markdown` file:')
     st.divider()
-    st.download_button(label="Download Markdown", data=downloadMD(), file_name="preview.md", mime="text/markdown")
-    st.markdown(downloadMD())
-
-def downloadMD():
-    return '## This is a sample markdown file.'
-
-def uploadDocs():
-    uploaded_file = st.file_uploader("Choose a  .docx file")
-    if uploaded_file is not None:
-        previewMD()
+    st.download_button(label="Download Markdown", data=content, file_name="preview.md", mime="text/markdown")
+    st.markdown(content)
 
 def main():
     config()

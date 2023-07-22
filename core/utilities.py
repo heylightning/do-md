@@ -1,9 +1,16 @@
 from docx import Document
+import streamlit as st
+
+def config(document):
+    return 'in progress'
 
 def headExtractor():
     pass
 
 def paraExtractor():
+    pass
+
+def listExtractor():
     pass
 
 def tableExtractor():
@@ -15,5 +22,8 @@ def imageExtractor():
 def linkExtractor():
     pass
 
-def main():
-    pass
+def renderer():
+    uploaded_file = st.file_uploader("Choose a  .docx file")
+    if uploaded_file is not None:
+        document = Document(uploaded_file)
+        return config(document)
