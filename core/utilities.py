@@ -23,7 +23,7 @@ def linkExtractor():
     pass
 
 def renderer():
-    uploaded_file = st.file_uploader("Choose a  .docx file")
+    uploaded_file = st.file_uploader("Choose a .docx file")
     if uploaded_file is not None:
         document = Document(uploaded_file)
         return config(document)
