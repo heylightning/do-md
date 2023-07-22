@@ -1,5 +1,7 @@
 ## Description 📄
 
+<img src="./static/icon.png" width="100px" alt="icon" />
+
 Convert your Docx file to a Markdown file.
 
 ## Steps to run main.py file: - 📑
