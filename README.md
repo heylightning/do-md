@@ -2,6 +2,39 @@
 
 Convert your Docx file to a Markdown file.
 
+## Steps to run main.py file: - 📑
+
+1. Clone the repository.
+
+```
+git clone <repo-link>
+```
+
+2. Open the terminal and navigate to the directory where you have cloned the repository.
+
+```
+cd <repo-link>
+```
+
+3. Install the dependencies using the following command:
+
+```bash
+pip install -r requirements.txt
+```
+
+3. Run the main.py file using the following command:
+
+```bash
+streamlit run main.py
+```
+
+After all of the configurations, you will see a link in the terminal. Click on the link and you will be redirected to the web app.
+
+```
+URL: http://localhost:8501
+Network URL: http://192.168.195.212:8501
+```
+
 ### LICENSE
 
 MIT License

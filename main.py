@@ -1,7 +1,4 @@
-from docx import Document
-
-def main():
-    pass
+from core import nucleus
 
 if __name__ == "__main__": 
-    main()
+    nucleus.cloud()
