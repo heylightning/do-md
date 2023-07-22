@@ -1,7 +1,5 @@
 ## Description 📄
 
-<img src="static\preview.png" width="600" style="border-radius: 20px" />
-
 Convert your Docx file to a Markdown file.
 
 ## Steps to run main.py file: - 📑
