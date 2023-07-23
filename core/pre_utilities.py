@@ -67,11 +67,17 @@ def textExtractor(block_xml):
     result_string = " ".join(text_values)
     return result_string
 
+# TODO: Should be encountered second.
+
 def tableDataConfig():
     pass
 
+# TODO: Should be encountered third.
+
 def imageBase64DataConfig():
     pass
+
+# TODO: Should be encountered first.
 
 def boldPartExtractor():
     pass
