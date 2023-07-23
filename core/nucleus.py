@@ -1,4 +1,4 @@
-from core import ui
+from core.ui import main
 
 def cloud():
-    ui.main()
+    main()
