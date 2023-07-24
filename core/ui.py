@@ -46,3 +46,4 @@ def previewMD(content):
 
 def main():
     config()
+    

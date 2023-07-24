@@ -33,3 +33,4 @@ def renderer():
     if uploaded_file is not None:
         document = Document(uploaded_file)
         return config(document)
+    
