@@ -1,4 +1,4 @@
-from core import nucleus
+from core.nucleus import cloud
 
 if __name__ == "__main__": 
-    nucleus.cloud()
+    cloud()
