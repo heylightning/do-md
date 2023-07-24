@@ -1,4 +1,5 @@
 from core.innText import *
+from core.innTable import *
 
 def titleExtractor(block_xml):
     if(block_xml.find('w:pStyle w:val="Title"') != -1):
@@ -45,6 +46,7 @@ def paraNimageExtractor(block_xml):
                     return 'Is a section break.'
                 else:
                     return 'Is a white line.'
+
 def listExtractor(block_xml):
     if(block_xml.find('w:pStyle w:val="ListParagraph"') != -1):
         if(block_xml.find('<w:t') != -1):
@@ -53,20 +55,20 @@ def listExtractor(block_xml):
 
 def tableExtractor(block_xml):
     if(block_xml.find('<w:tblStyle w:val="TableGrid"/>') != -1):
-        return "Is a table."
+        
+        columns, rows = tableDataConfig(block_xml)
+        print("Columns:")
+        for i, col in enumerate(columns):
+            print(f"Column {i+1}: {col} (width)")
+
+        print("\nRows:")
+        for i, row in enumerate(rows):
+            print(f"Row {i+1}: {', '.join(row)}")
+
+        return tableDataConfig(block_xml)[0], tableDataConfig(block_xml)[1]    
     return None
 
 def imageExtractor(block_xml):
     if(block_xml.find('<w:drawing>') != -1):
-        return "Is an image."
+        return "Found an Image."
     return None
-
-# TODO: Should be encountered second.
-
-def tableDataConfig():
-    pass
-
-# TODO: Should be encountered third.
-
-def imageBase64DataConfig():
-    pass
