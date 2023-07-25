@@ -70,5 +70,5 @@ def tableExtractor(block_xml):
 
 def imageExtractor(block_xml):
     if(block_xml.find('<w:drawing>') != -1):
-        return "Found an Image."
+        return "Image."
     return None

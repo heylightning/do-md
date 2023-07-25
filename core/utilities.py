@@ -1,6 +1,7 @@
 from docx import Document
 import streamlit as st
 from core.pre_utilities import *
+from core.innImage import extract_base64_image_from_docx, create_image_files
 
 def config(document):
     block_xmlArr = []
@@ -20,7 +21,10 @@ def config(document):
         elif tableExtractor(block_xmlArr[iteration - 1]) != None:
             lineDict[f"Line {iteration}"] = tableExtractor(block_xmlArr[iteration - 1])
         elif paraNimageExtractor(block_xmlArr[iteration - 1]) != None:
-            lineDict[f"Line {iteration}"] = paraNimageExtractor(block_xmlArr[iteration - 1])
+            if paraNimageExtractor(block_xmlArr[iteration - 1]) == "Image.":
+                create_image_files(iteration, extract_base64_image_from_docx(document))
+            else:
+                lineDict[f"Line {iteration}"] = paraNimageExtractor(block_xmlArr[iteration - 1])
     
     temp = ""
     for content in lineDict:
