@@ -2,6 +2,7 @@ from docx import Document
 import streamlit as st
 from core.pre_utilities import *
 from core.innImage import extract_base64_image_from_docx, create_image_files
+from core.marking import tableMarker, imageMarker
 
 def config(document):
     block_xmlArr = []
@@ -21,17 +22,25 @@ def config(document):
         elif tableExtractor(block_xmlArr[iteration - 1]) != None:
             if (type(tableExtractor(block_xmlArr[iteration - 1])) == list):
                 lineDict[f"Line {iteration}"] = tableExtractor(block_xmlArr[iteration - 1])
+                
+                # Under HEALTH-CHECK
+                # lineDict[f"Line {iteration}"] = tableMarker(tableExtractor(block_xmlArr[iteration - 1]))
+
         elif paraNimageExtractor(block_xmlArr[iteration - 1]) != None:
             if paraNimageExtractor(block_xmlArr[iteration - 1]) == "Image.":
                 create_image_files(iteration, extract_base64_image_from_docx(document))
+
+                # Under HEALTH-CHECK
+                # lineDict[f"Line {iteration}"] = imageMarker(iteration)
+
             else:
                 lineDict[f"Line {iteration}"] = paraNimageExtractor(block_xmlArr[iteration - 1])
     
-    temp = ""
+    markdown = ""
     for content in lineDict:
-        temp = temp + str(f"{content} : {lineDict[content]} \n\n")
+        markdown = markdown + str(f"{content} : {lineDict[content]} \n\n")
 
-    return temp
+    return markdown
 
 def renderer():
     uploaded_file = st.file_uploader("Choose a .docx file")
