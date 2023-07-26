@@ -8,14 +8,20 @@ def xmlConfig(element):
     fTableArr = []
 
     for num in element:
+        if (num.tag).endswith('tblGrid'):
+            for grandnum in num:
+                if (grandnum.tag).endswith('gridCol'):
+                    noCol = noCol + 1
         if (num.tag).endswith('tr'):
-            noCol = noCol + 1
             for grandnum in num:
                 if (grandnum.tag).endswith('tc'):
                     noRow = noRow + 1
     for child in element:
+        if (num.tag).endswith('tblGrid'):
+            for grandchild in child:
+                if (grandchild.tag).endswith('gridCol'):
+                    Col = Col + 1
         if (child.tag).endswith('tr'):
-            Col = Col + 1
             for grandchild in child:
                 if (grandchild.tag).endswith('tc'):
                     Row = Row + 1
@@ -42,4 +48,5 @@ def xmlConfig(element):
         else:
             temp = []
 
-    return fTableArr
+
+    return fTableArr, noCol

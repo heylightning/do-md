@@ -56,7 +56,8 @@ def listExtractor(block_xml):
 
 def tableExtractor(block_xml):
     if(block_xml.find('<w:tblStyle w:val="TableGrid"/>') != -1):
-        return xmlConfig(ET.fromstring(block_xml))   
+        dataArr, noCol = xmlConfig(ET.fromstring(block_xml))
+        return dataArr, noCol
     return None
 
 def imageExtractor(block_xml):

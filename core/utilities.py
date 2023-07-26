@@ -6,7 +6,7 @@ from core.marking import tableMarker, imageMarker
 
 def config(document):
     block_xmlArr = []
-    lineDict = {}
+    lineDict = {} 
     for block in document.element.body:
         block_xmlArr.append(block.xml)
 
@@ -20,19 +20,14 @@ def config(document):
         elif listExtractor(block_xmlArr[iteration - 1]) != None:
             lineDict[f"Line {iteration}"] = listExtractor(block_xmlArr[iteration - 1])
         elif tableExtractor(block_xmlArr[iteration - 1]) != None:
-            if (type(tableExtractor(block_xmlArr[iteration - 1])) == list):
-                lineDict[f"Line {iteration}"] = tableExtractor(block_xmlArr[iteration - 1])
-                
-                # Under HEALTH-CHECK
-                # lineDict[f"Line {iteration}"] = tableMarker(tableExtractor(block_xmlArr[iteration - 1]))
-
+            Arr, Col = tableExtractor(block_xmlArr[iteration - 1])
+            print(f"\n{tableMarker(Arr, Col)}\n") # Only for Data Visualization.
+            lineDict[f"Line {iteration}"] = tableMarker(Arr, Col)
         elif paraNimageExtractor(block_xmlArr[iteration - 1]) != None:
             if paraNimageExtractor(block_xmlArr[iteration - 1]) == "Image.":
                 create_image_files(iteration, extract_base64_image_from_docx(document))
-
-                # Under HEALTH-CHECK
-                # lineDict[f"Line {iteration}"] = imageMarker(iteration)
-
+                if (imageMarker(iteration) == True):
+                    lineDict[f"Line {iteration}"] = f"![Image](image-{iteration}.png)"
             else:
                 lineDict[f"Line {iteration}"] = paraNimageExtractor(block_xmlArr[iteration - 1])
     

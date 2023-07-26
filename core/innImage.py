@@ -18,4 +18,4 @@ def create_image_files(line, base64_imagesArr):
     for bytes in base64_imagesArr:
         with open(f"TBZped/image-{line}.png", "wb") as f:
             f.write(bytes)
-        print(f"image-{line}.png successfully created.\n")
+        print(f"\nimage-{line}.png successfully created\n")
