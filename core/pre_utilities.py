@@ -1,5 +1,6 @@
-from core.innText import *
-from core.innTable import *
+from core.innText import textExtractor
+from core.innTable import xmlConfig
+import xml.etree.ElementTree as ET
 
 def titleExtractor(block_xml):
     if(block_xml.find('w:pStyle w:val="Title"') != -1):
@@ -55,17 +56,7 @@ def listExtractor(block_xml):
 
 def tableExtractor(block_xml):
     if(block_xml.find('<w:tblStyle w:val="TableGrid"/>') != -1):
-        
-        columns, rows = tableDataConfig(block_xml)
-        print("Columns:")
-        for i, col in enumerate(columns):
-            print(f"Column {i+1}: {col} (width)")
-
-        print("\nRows:")
-        for i, row in enumerate(rows):
-            print(f"Row {i+1}: {', '.join(row)}")
-
-        return tableDataConfig(block_xml)[0], tableDataConfig(block_xml)[1]    
+        return xmlConfig(ET.fromstring(block_xml))   
     return None
 
 def imageExtractor(block_xml):

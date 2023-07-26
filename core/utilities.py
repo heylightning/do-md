@@ -19,7 +19,8 @@ def config(document):
         elif listExtractor(block_xmlArr[iteration - 1]) != None:
             lineDict[f"Line {iteration}"] = listExtractor(block_xmlArr[iteration - 1])
         elif tableExtractor(block_xmlArr[iteration - 1]) != None:
-            lineDict[f"Line {iteration}"] = tableExtractor(block_xmlArr[iteration - 1])
+            if (type(tableExtractor(block_xmlArr[iteration - 1])) == list):
+                lineDict[f"Line {iteration}"] = tableExtractor(block_xmlArr[iteration - 1])
         elif paraNimageExtractor(block_xmlArr[iteration - 1]) != None:
             if paraNimageExtractor(block_xmlArr[iteration - 1]) == "Image.":
                 create_image_files(iteration, extract_base64_image_from_docx(document))
