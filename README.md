@@ -13,7 +13,7 @@ git clone <repo-link>
 2. Open the terminal and navigate to the directory where you have cloned the repository.
 
 ```
-cd <repo-link>
+cd <repo-name>
 ```
 
 3. Install the dependencies using the following command:
