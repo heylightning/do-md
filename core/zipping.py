@@ -17,8 +17,3 @@ def create_zip_from_folder(folder_path, zip_filename):
                 zipf.write(os.path.join(root, file), arcname=relative_path)
                 
     print(f"Zip file {zip_filename} created.")
-
-folder_to_zip = "TBZped"
-zip_file_name = "mdZip.zip"
-
-create_zip_from_folder(folder_to_zip, zip_file_name)

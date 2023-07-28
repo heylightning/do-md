@@ -1,6 +1,7 @@
 import streamlit as st
 from core import utilities
 from PIL import Image
+from core.zipping import create_zip_from_folder
 
 def config():
     st.set_page_config(
@@ -37,12 +38,21 @@ def heroSec():
     content = utilities.renderer()
     if content is not None:
         previewMD(content)
+        configMarkdown(content)
 
 def previewMD(content):
     st.markdown('### Preview for your `markdown` file:')
     st.divider()
-    st.download_button(label="Download Markdown", data=content, file_name="preview.md", mime="text/markdown")
+    with open('mdZip.zip', 'rb') as f:
+        st.download_button('Download Markdown', f, file_name='DoMD.zip', mime='application/zip')
     st.markdown(content)
+
+def configMarkdown(content):
+    with open(f"TBZped/markdown.md", "w") as f:
+        f.write(content)
+    
+    print("\nMarkdown file successfully created.\n")
+    create_zip_from_folder("TBZped", "mdZip.zip")
 
 def main():
     config()
