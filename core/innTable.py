@@ -31,22 +31,23 @@ def xmlConfig(element):
                                 if (greatgreatgrandchild.tag).endswith('r'):
                                     for finalchild in greatgreatgrandchild:
                                         if (finalchild.tag).endswith('t'):
-                                            temp.append(finalchild.text.strip())
+                                            temp.append(
+                                                finalchild.text.strip())
                                 elif (greatgreatgrandchild.tag).endswith('hyperlink'):
                                     for finalchild in greatgreatgrandchild:
                                         if (finalchild.tag).endswith('r'):
                                             for finalgrandchild in finalchild:
                                                 if (finalgrandchild.tag).endswith('t'):
-                                                    temp.append(finalgrandchild.text.strip())
+                                                    temp.append(
+                                                        finalgrandchild.text.strip())
                             fTableArr.append(" ".join(temp))
-                if(Row == noRow):
+                if (Row == noRow):
                     break
                 else:
                     temp = []
-        if(Col == noCol):
+        if (Col == noCol):
             break
         else:
             temp = []
-
 
     return fTableArr, noCol
